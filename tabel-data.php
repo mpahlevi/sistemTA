@@ -5,8 +5,8 @@
 	<title>Database</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -40,8 +40,8 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Sensor</th>
-            <th>Location</th>
+            <!-- <th>Sensor</th>
+            <th>Location</th> -->
             <th>Value 1</th>
             <th>Value 2</th>
             <th>Value 3</th>
@@ -53,38 +53,41 @@
     </thead>
     <tbody>
     <?php
-    require 'koneksi.php';
+    // require 'koneksi.php';
         $servername = "localhost";
 
-// REPLACE with your Database name
-$dbname = "u7786689_pahlevi";
-// REPLACE with Database user
-$username = "u7786689_user_pahlevi";
-// REPLACE with Database user password
-$password = "sukses2022";
+    // REPLACE with your Database name
+    $dbname = "u7786689_pahlevi";
+    // REPLACE with Database user
+    $username = "u7786689_user_pahlevi";
+    // REPLACE with Database user password
+    $password = "sukses2022";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-$sql = "SELECT id, sensor, location, value1, value2, value3, reading_time FROM SensorData ORDER BY id DESC";
+    $sql = "SELECT id, value1, value2, value3, value4, value5, value6, reading_time FROM SensorData ORDER BY id DESC"; // sensor & location is not available
+    $sensordata = $conn->query($sql);
+    $result = mysqli_fetch_array($sensordata);
 
-        while($row = mysqli_fetch_array($sensordata))
-        {
-            echo "<tr>
-            <td>".$row['id']."</td>
-            <td>".$row['value1']."</td>
-            <td>".$row['value2']."</td>
-            <td>".$row['value3']."</td>
-            <td>".$row['value4']."</td>
-            <td>".$row['value5']."</td>
-            <td>".$row['value6']."</td>
-            <td>".$row['reading_time']."</td>
-        </tr>";
-        }
+    while($row = mysqli_fetch_array($sensordata))
+    {
+        echo "<tr>
+        <td>".$row['id']."</td>
+        <td>".$row['value1']."</td>
+        <td>".$row['value2']."</td>
+        <td>".$row['value3']."</td>
+        <td>".$row['value4']."</td>
+        <td>".$row['value5']."</td>
+        <td>".$row['value6']."</td>
+        <td>".$row['reading_time']."</td>
+    </tr>";
+    }
+
     ?>
     </tbody>
 
