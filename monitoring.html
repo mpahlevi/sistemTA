@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Monitoring</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="jquery/jquery.min.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function(){
+        setInterval(function(){
+            $("#ceksuhu").load('ceksuhu.php');
+            $("#cekdo").load('cekdo.php');
+            $("#cekph").load('cekph.php');
+            $("#cekkekeruhan").load('cekkekeruhan.php');
+            $("#cekaerator1").load('cekaerator1.php');
+            $("#cekaerator2").load('cekaerator2.php');
+        },1000);
+    });
+    </script>
+</head>
+<body>
+	<!-- header -->
+	<header>
+		<div class="container">
+			<h1><a href="index.html">SISTEM KONTROL DAN <br>MONITORING KUALITAS AIR</a></h1>
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li class="active"><a href="monitoring.html">MONITORING</a></li>
+				<li><a href="tabel-data.php">DATABASE</a></li>
+			</ul>
+		</div>
+	</header>
+
+<div class="container" style="width: 25%">
+    <div class="container" align='center' style="font-size: 30px; font-weight: bold; background-color: blue; color: white">
+        Suhu (°C)
+    </div>
+    <div class="container" align='center'>
+        <h1><span id="ceksuhu"> 0 </span></h1>
+    </div>
+</div>
+<div class="container" align='center' style="width: 25%">
+    <div class="container" style="font-size: 30px; font-weight: bold; background-color: blue; color: white">
+        Oksigen Terlarut (mg/L)
+    </div>
+    <div class="container" align='center'>
+        <h1><span id="cekdo"> 0 </span></h1>
+    </div>
+</div>
+<div class="container" align='center' style="width: 25%">
+    <div class="container" style="font-size: 30px; font-weight: bold; background-color: blue; color: white">
+        pH
+    </div>
+    <div class="container" align='center'>
+        <h1><span id="cekph"> 0 </span></h1>
+    </div>
+</div>
+<div class="container" align='center' style="width: 25%">
+    <div class="container" style="font-size: 30px; font-weight: bold; background-color: blue; color: white">
+        Kekeruhan (NTU)
+    </div>
+    <div class="container" align='center'>
+        <h1><span id="cekkekeruhan"> 0 </span></h1>
+    </div>
+</div>
+<div class="container" align='center' style="width: 25%">
+    <div class="container" style="font-size: 30px; font-weight: bold; background-color: orange; color: white">
+        Aerator 1
+    </div>
+    <div class="container" align='center'>
+        <h1><span id="cekaerator1"> 0  </span></h1>
+    </div>
+</div>
+<div class="container" align='center' style="width: 25%">
+    <div class="container" style="font-size: 30px; font-weight: bold; background-color: orange; color: white">
+        Aerator 2
+    </div>
+    <div class="container" align='center'>
+        <h1><span id="cekaerator2"> 0 </span></h1>
+    </div>
+</div>
+
+	<!-- about -->
+	<section class="about">
+		<div class="container">
+			<h3>ABOUT</h3>
+			<p>Halaman ini adalah untuk melihat nilai sensor dan aktuator secara langsung</p>
+		</div>
+	</section>
+
+	<!-- footer -->
+	<footer>
+		<div class="container">
+			<small>By Pahlevi - 2022</small>
+		</div>
+	</footer>
+</body>
+</html>
